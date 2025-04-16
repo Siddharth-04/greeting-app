@@ -6,6 +6,9 @@ import com.bridgelabz.greetingapp.repository.GreetingRepsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
+import java.util.Optional;
+
 @Service
 public class GreetingServiceImpl implements IGreetingService {
     @Autowired
@@ -28,6 +31,16 @@ public class GreetingServiceImpl implements IGreetingService {
     public String saveMessage(Greeting greeting) {
         greetingRepsitory.save(greeting);
         return "Message saved";
+    }
+
+    @Override
+    public String getMessageById(Long id) {
+        Optional<Greeting> obj = greetingRepsitory.findById(id);
+        if(obj.isPresent()){
+            return obj.get().getMessage();
+        }
+
+        return "Message not present with this ID";
     }
 
 }

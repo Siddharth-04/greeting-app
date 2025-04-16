@@ -28,4 +28,8 @@ public class GreetingController {
         return greetingService.saveMessage(greeting);
     }
 
+    @GetMapping("/getmessage/{id}")
+    public String getMessage(@PathVariable Long id){
+        return greetingService.getMessageById(id);
+    }
 }
