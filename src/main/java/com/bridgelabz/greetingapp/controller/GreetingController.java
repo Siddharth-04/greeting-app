@@ -1,5 +1,6 @@
 package com.bridgelabz.greetingapp.controller;
 
+import com.bridgelabz.greetingapp.model.Greeting;
 import com.bridgelabz.greetingapp.model.UserInfo;
 import com.bridgelabz.greetingapp.service.GreetingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class GreetingController {
     @PostMapping
     public String greetByUserName(@RequestBody UserInfo userInfo){
         return greetingService.greetByUserName(userInfo);
+    }
+
+    @PostMapping("/savegreeting")
+    public String saveMessage(@RequestBody Greeting greeting){
+        return greetingService.saveMessage(greeting);
     }
 
 }

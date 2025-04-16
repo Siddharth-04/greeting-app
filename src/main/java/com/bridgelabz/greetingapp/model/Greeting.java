@@ -10,6 +10,16 @@ public class Greeting {
     @Id
     private Long id;
 
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
