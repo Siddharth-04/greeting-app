@@ -13,4 +13,6 @@ public interface IGreetingService {
     String saveMessage(@RequestBody Greeting greeting);
     String getMessageById(@PathVariable Long id);
     List<Greeting> getAllMessages();
+    String updateMessage(@PathVariable Long id,@RequestBody Greeting greet);
+    String deleteMessageById(@PathVariable Long id);
 }

@@ -50,4 +50,29 @@ public class GreetingServiceImpl implements IGreetingService {
         return allMessages;
     }
 
+    @Override
+    public String updateMessage(Long id,Greeting greet) {
+        Optional<Greeting> obj = greetingRepsitory.findById(id);
+        if(obj.isPresent()){
+            Greeting message = obj.get();
+            message.setMessage(greet.getMessage());
+            greetingRepsitory.save(message);
+            return "Message Updated";
+        }
+
+        return "Error returning message";
+    }
+
+    @Override
+    public String deleteMessageById(Long id) {
+        Optional<Greeting> obj = greetingRepsitory.findById(id);
+        if(obj.isPresent()){
+            greetingRepsitory.deleteById(id);
+            return "Message deleted !";
+        }
+
+        return "Message not found with this id";
+    }
+
+
 }
